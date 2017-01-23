@@ -13,12 +13,25 @@ function alphabet_position(str) {
     return arr2.toString('').replace(/,/g, ' ')
 }
 
-alphabet_position("The sunset sets at twelve o' clock 222.")
-
-
 // The function should take three arguments - operation(string/char), value1(number), value2(number).
 // The function should return result of numbers after applying the chosen operation.
 
 function basicOp(operation, value1, value2) {
     return eval(`${value1} ${operation} ${value2}`);
 }
+
+
+// We need a function that can transform a number into a string.
+function numberToString(num) {
+    let strNum = num.toString()
+    return strNum
+}
+
+// Remove smalles number in array, if two are the same remove the one with the smallest index.
+
+function removeSmallest(arr) {
+    arr.splice(arr.indexOf(Math.min.apply(Math, arr)), 1)
+    return arr;
+}
+
+console.log(removeSmallest([2, 23, 2, 1, 3, 10]));
