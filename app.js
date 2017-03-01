@@ -35,3 +35,35 @@ function removeSmallest(arr) {
 }
 
 console.log(removeSmallest([2, 23, 2, 1, 3, 10]));
+
+
+
+// Write a function to greet a person. Function will take name as
+// input and greet the person by saying hello. Return null/nil if input is empty string or null/nil.
+function greet(name) {
+    if (name === null || name === '') {
+        return null;
+    } else {
+        return `hello ${name}!`
+    }
+}
+
+console.log(greet('Derek'));
+
+// You are given an array strarr of strings and an integer k.
+// Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+
+function longestConsec(strarr, k) {
+    let newArr = []
+    let lengthArr = []
+    for (var i = 0; i < strarr.length; i++) {
+        newArr.push(strarr[i].concat(strarr[i + 1]))
+    }
+    for (var i = 0; i < newArr.length; i++) {
+        lengthArr.push(newArr[i].length)
+    }
+    lengthArr.sort((a, b) => b - a)
+    return lengthArr[0]
+}
+
+console.log(longestConsec(['hello', 'how', 'are', 'consecutive', 'tommies'], 2));
