@@ -20,7 +20,6 @@ function basicOp(operation, value1, value2) {
     return eval(`${value1} ${operation} ${value2}`);
 }
 
-
 // We need a function that can transform a number into a string.
 function numberToString(num) {
     let strNum = num.toString()
@@ -34,10 +33,6 @@ function removeSmallest(arr) {
     return arr;
 }
 
-console.log(removeSmallest([2, 23, 2, 1, 3, 10]));
-
-
-
 // Write a function to greet a person. Function will take name as
 // input and greet the person by saying hello. Return null/nil if input is empty string or null/nil.
 function greet(name) {
@@ -48,16 +43,14 @@ function greet(name) {
     }
 }
 
-console.log(greet('Derek'));
-
 // You are given an array strarr of strings and an integer k.
 // Your task is to return the first longest string consisting of k consecutive strings taken in the array.
 
 function longestConsec(strarr, k) {
     let newArr = []
     let lengthArr = []
-    for (var i = 0; i < strarr.length; i++) {
-        newArr.push(strarr[i].concat(strarr[i + 1]))
+    for (var i = 0; i < k; i++) {
+        newArr.push(strarr[i])
     }
     for (var i = 0; i < newArr.length; i++) {
         lengthArr.push(newArr[i].length)
@@ -66,4 +59,29 @@ function longestConsec(strarr, k) {
     return lengthArr[0]
 }
 
-console.log(longestConsec(['hello', 'how', 'are', 'consecutive', 'tommies'], 2));
+// In DNA strings, symbols "A" and "T" are complements of each other,
+// as "C" and "G". You have function with one side of the DNA (string, except for Haskell);
+// you need to get the other complementary side. DNA strand is never empty or there is no DNA at all
+// (again, except for Haskell).
+// DNAStrand ("ATTGC") # return "TAACG"
+
+function DNAStrand(dna) {
+    let arr = [];
+    let arr2 = [];
+    arr = dna.split('')
+    arr.forEach(element => {
+        if (element == "A") {
+            arr2.push('T')
+        } else if (element == 'T') {
+            arr2.push('A')
+        } else if (element == 'C') {
+            arr2.push('G')
+        } else {
+            arr2.push('C')
+        }
+    })
+    let result = arr2.join('');
+    return result;
+}
+
+console.log(DNAStrand('ATTGC'));
