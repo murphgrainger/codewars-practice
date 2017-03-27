@@ -85,3 +85,34 @@ function DNAStrand(dna) {
 }
 
 console.log(DNAStrand('ATTGC'));
+
+
+// The sequence is defined by 3 non-negative values: begin, end, step.
+//
+// If begin value is greater than the end, function should returns 0
+
+// sequenceSum(2,2,2) === 2
+// sequenceSum(2,6,2) === 12 // 2 + 4 + 6
+// sequenceSum(1,5,1) === 15 // 1 + 2 + 3 + 4 + 5
+// sequenceSum(1,5,3) === 5 // 1 + 4
+
+function sequenceSum(begin, end, step) {
+  let arr = [];
+  if (begin > end) {
+    return false
+  } else {
+    arr.push(begin)
+    for (var i = 0; i < (end/2)-1; i++) {
+      arr.push(arr[i] + step)
+    }
+
+  let sum = arr.reduce((a, b) => {
+    // console.log(a)
+    console.log(b);
+    return a + b;
+  })
+  return sum
+}
+}
+
+console.log(sequenceSum(1,5,1));
