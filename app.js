@@ -87,32 +87,32 @@ function DNAStrand(dna) {
 console.log(DNAStrand('ATTGC'));
 
 
-// The sequence is defined by 3 non-negative values: begin, end, step.
 //
-// If begin value is greater than the end, function should returns 0
+// Given two arrays a and b write a function comp(a, b) (compSame(a, b) in Clojure)
+// that checks whether the two arrays have the "same" elements, with the same multiplicities.
+// "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
 
-// sequenceSum(2,2,2) === 2
-// sequenceSum(2,6,2) === 12 // 2 + 4 + 6
-// sequenceSum(1,5,1) === 15 // 1 + 2 + 3 + 4 + 5
-// sequenceSum(1,5,3) === 5 // 1 + 4
-
-function sequenceSum(begin, end, step) {
-  let arr = [];
-  if (begin > end) {
+function comp(a, b) {
+  if (a.length === 0 || b.length === 0 || a === null || b === null || a.length !== b.length) {
     return false
   } else {
-    arr.push(begin)
-    for (var i = 0; i < (end/2)-1; i++) {
-      arr.push(arr[i] + step)
-    }
-
-  let sum = arr.reduce((a, b) => {
-    // console.log(a)
-    console.log(b);
-    return a + b;
+  let c = []
+  let a2 = a.sort((c, d) => {
+    return c - d
+  });
+  let b2 = b.sort((c, d) => {
+    return c - d
+  });
+  a2.forEach(element => {
+    c.push(element*element)
   })
-  return sum
+for (var i = 0; i < b2.length; i++) {
+  if (b2[i] !== c[i]) {
+    return false
+  }
+}
+return true;
 }
 }
 
-console.log(sequenceSum(1,5,1));
+console.log(comp([11, 19, 144], [121, 361, 20736]));
