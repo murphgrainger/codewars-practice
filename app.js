@@ -84,7 +84,7 @@ function DNAStrand(dna) {
     return result;
 }
 
-console.log(DNAStrand('ATTGC'));
+// console.log(DNAStrand('ATTGC'));
 
 
 //
@@ -93,7 +93,7 @@ console.log(DNAStrand('ATTGC'));
 // "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
 
 function comp(a, b) {
-  if (a.length === 0 || b.length === 0 || a === null || b === null || a.length !== b.length) {
+  if (a.length === 0 || b.length === 0 || a === null || b === null|| a.length !== b.length) {
     return false
   } else {
   let c = []
@@ -115,4 +115,16 @@ return true;
 }
 }
 
-console.log(comp([11, 19, 144], [121, 361, 20736]));
+// console.log(comp([11, 19, 144], [121, 361, 20736]));
+
+
+function average(scores) {
+let sum = scores.reduce((a, b) => {
+  return a + b
+})
+let average = Math.round(sum/scores.length)
+
+return average
+}
+
+console.log(average([22, 3, 6, 23]));
