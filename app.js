@@ -93,38 +93,69 @@ function DNAStrand(dna) {
 // "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
 
 function comp(a, b) {
-  if (a.length === 0 || b.length === 0 || a === null || b === null|| a.length !== b.length) {
-    return false
-  } else {
-  let c = []
-  let a2 = a.sort((c, d) => {
-    return c - d
-  });
-  let b2 = b.sort((c, d) => {
-    return c - d
-  });
-  a2.forEach(element => {
-    c.push(element*element)
-  })
-for (var i = 0; i < b2.length; i++) {
-  if (b2[i] !== c[i]) {
-    return false
-  }
-}
-return true;
-}
+    if (a.length === 0 || b.length === 0 || a === null || b === null || a.length !== b.length) {
+        return false
+    } else {
+        let c = []
+        let a2 = a.sort((c, d) => {
+            return c - d
+        });
+        let b2 = b.sort((c, d) => {
+            return c - d
+        });
+        a2.forEach(element => {
+            c.push(element * element)
+        })
+        for (var i = 0; i < b2.length; i++) {
+            if (b2[i] !== c[i]) {
+                return false
+            }
+        }
+        return true;
+    }
 }
 
 // console.log(comp([11, 19, 144], [121, 361, 20736]));
 
 
 function average(scores) {
-let sum = scores.reduce((a, b) => {
-  return a + b
-})
-let average = Math.round(sum/scores.length)
+    let sum = scores.reduce((a, b) => {
+        return a + b
+    })
+    let average = Math.round(sum / scores.length)
 
-return average
+    return average
 }
 
-console.log(average([22, 3, 6, 23]));
+
+// Implement the function unique_in_order which takes as argument a
+// sequence and returns a list of items without any elements with the same
+// value next to each other and preserving the original order of elements.
+// uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+function uniqueInOrder(iterable) {
+    if (iterable === '') {
+        let arr = []
+        return arr
+    } else if (Array.isArray(iterable)) {
+        let arr2 = []
+        arr2.push(iterable[0])
+        for (var i = 0; i < iterable.length - 1; i++) {
+            if (iterable[i + 1] !== iterable[i]) {
+                arr2.push(iterable[i + 1])
+            }
+        }
+        return arr2
+    } else {
+        arr = iterable.split('');
+        let arr2 = []
+        arr2.push(arr[0])
+        for (var i = 0; i < arr.length - 1; i++) {
+            if (arr[i + 1] !== arr[i]) {
+                arr2.push(arr[i + 1])
+            }
+        }
+        return arr2;
+    }
+}
+
+console.log(uniqueInOrder([1, 2, 2, 3]));
