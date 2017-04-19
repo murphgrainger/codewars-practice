@@ -159,3 +159,33 @@ function uniqueInOrder(iterable) {
 }
 
 console.log(uniqueInOrder([1, 2, 2, 3]));
+
+
+// Write a function that takes an array of strings as an
+// argument and returns a sorted array containing the same strings,
+// ordered from shortest to longest.
+
+function sortByLength (array) {
+  array.sort((a, b) => {
+    return a.length - b.length
+  })
+  return array
+};
+
+console.log(sortByLength(["Telescopes", "Glasses", "Eyes", "Monocles"]));
+
+
+ // Square every digit of a number.
+
+ function squareDigits(num){
+   let arr = []
+   let str = num.toString()
+   for (var i = 0; i < str.length; i++) {
+     let squared = Number(str[i]) * Number(str[i])
+     arr.push(squared)
+   }
+  let int = Number(arr.join(''))
+  return int
+}
+
+console.log(squareDigits(1234));
