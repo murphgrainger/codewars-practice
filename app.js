@@ -158,9 +158,6 @@ function uniqueInOrder(iterable) {
     }
 }
 
-console.log(uniqueInOrder([1, 2, 2, 3]));
-
-
 // Write a function that takes an array of strings as an
 // argument and returns a sorted array containing the same strings,
 // ordered from shortest to longest.
@@ -171,8 +168,6 @@ function sortByLength (array) {
   })
   return array
 };
-
-console.log(sortByLength(["Telescopes", "Glasses", "Eyes", "Monocles"]));
 
 
  // Square every digit of a number.
@@ -188,4 +183,59 @@ console.log(sortByLength(["Telescopes", "Glasses", "Eyes", "Monocles"]));
   return int
 }
 
-console.log(squareDigits(1234));
+
+// The numberOfOccurrences function must return
+// the number of occurrences of an element in an array.
+
+Array.prototype.numberOfOccurrences = function(element) {
+  let counter = 0;
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] === element) {
+      counter++
+    }
+  }
+  return counter;
+}
+
+
+
+// Implement the method isSortedAndHow, which accepts an array of integers,
+// and returns one of the following:
+//
+// 'yes, ascending' - if the numbers in the array are sorted in an ascending way
+// 'yes, descending' - if the numbers in the array are sorted in a descending way
+// 'no'
+
+function isSortedAndHow(array) {
+  let arrStr = array.toString()
+  let ascArr = array.sort((a,b) => {
+    return a-b;
+  })
+  if (arrStr === ascArr.toString()) {
+    return 'yes, ascending'
+  }
+  else if (arrStr === ascArr.reverse().toString()) {
+    return 'yes, descending'
+  }
+  else {
+    return 'no'
+  }
+}
+
+// Count the number of exclamation marks and question marks, return the product.
+// Product("!???") == 3
+function product(s){
+  let qCount = 0;
+  let eCount = 0;
+  for (var i = 0; i < s.length; i++) {
+    if (s[i] === '!') {
+      eCount++
+    }
+    else {
+      qCount++
+    }
+  }
+  return eCount*qCount
+}
+
+console.log(product('!???'));
