@@ -238,4 +238,45 @@ function product(s){
   return eCount*qCount
 }
 
-console.log(product('!???'));
+
+// In short: an invalid sequence (a string with non numeric character) must return 1,
+// an already complete (or empty) sequence must return 0;
+// a broken sequence with more than one number missing should return the lowest missing number;
+// otherwise return the missing number.
+//
+// Note that the input may be with random order.
+
+function findMissingNumber(sequence){
+  let numArr = [];
+  let offArr = [];
+  let status;
+  let arr = sequence.split(' ').sort().forEach(e => {
+    numArr.push(Number(e))
+  })
+  if (sequence === '') {
+    return 0;
+  }
+  if (isNaN(numArr[0])) {
+    return 1;
+  }
+  for (var i = 1; i < numArr.length; i++) {
+  if (isNaN(numArr[i])) {
+    return 1;
+  }
+  else if ((numArr[i] - 1) === numArr[i-1]) {
+    console.log(numArr[i]);
+    status = 0;
+  }
+  else {
+    if ((numArr[i] - 1) !== numArr[i-1]) {
+      offArr.push(numArr[i - 1]);
+      return offArr[0] + 1
+    }
+  }
+}
+if (status === 0) {
+  return status
+}
+}
+
+console.log(findMissingNumber("1 2 2 4"));
