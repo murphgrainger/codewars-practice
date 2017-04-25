@@ -279,4 +279,39 @@ if (status === 0) {
 }
 }
 
-console.log(findMissingNumber("1 2 2 4"));
+// Check to see if a string has the same amount of 'x's and 'o's.
+// The method must return a boolean and be case insensitive.
+// The string can contains any char.
+
+function XO(str) {
+  let oCounter = 0;
+  let xCounter = 0;
+  let cleanStr = str.toLowerCase()
+  for (var i = 0; i < cleanStr.length; i++) {
+    if (cleanStr[i] === 'o') {
+      oCounter++;
+    }
+    else if (cleanStr[i] === 'x') {
+      xCounter++;
+    }
+  }
+    if (oCounter === xCounter) {
+      return true;
+    }
+    else {
+      return false
+    }
+}
+
+console.log(XO("ooxXm"));
+
+// Complete the function/method so that it returns
+// the url with anything after the anchor (#) removed.
+
+function removeUrlAnchor(url){
+  let shortURL = url.split('#')[0].toString();
+  console.log(shortURL);
+  return shortURL
+}
+
+removeUrlAnchor('www.codewars.com#about')
