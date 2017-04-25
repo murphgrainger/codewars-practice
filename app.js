@@ -303,15 +303,46 @@ function XO(str) {
     }
 }
 
-console.log(XO("ooxXm"));
-
 // Complete the function/method so that it returns
 // the url with anything after the anchor (#) removed.
 
 function removeUrlAnchor(url){
   let shortURL = url.split('#')[0].toString();
-  console.log(shortURL);
   return shortURL
 }
 
-removeUrlAnchor('www.codewars.com#about')
+// Which distances, hence which towns, they will choose so that the
+// sum of the distances is the biggest possible -
+// to please Mary - but less than t - to please John- ?
+var ts = [50, 55, 56, 57, 58]
+function chooseBestSum(t, k, ls) {
+  let bestSum = 0;
+
+  //t = max sum distance
+  // k = number towns to visit
+  return bestSum;
+}
+
+console.log(chooseBestSum(163, 3, ts));
+
+//Array of strings, find which one is most common
+
+function mostCommonString(arr) {
+  let obj = {};
+  let max = 0;
+  let maxEl;
+  for (var i = 0; i < arr.length; i++) {
+      if (obj.hasOwnProperty(arr[i])) {
+        obj[arr[i]]++
+        if (obj[arr[i]] > max) {
+          max = obj[arr[i]]
+          maxEl = arr[i]
+        }
+      } else {
+        obj[arr[i]] = 1;
+      }
+  }
+  return maxEl
+}
+
+console.log(mostCommonString(['hi', 'yo', 'hi', 'hello', 'yo', 'hi', 'dog']));
