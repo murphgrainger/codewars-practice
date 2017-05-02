@@ -323,8 +323,6 @@ function chooseBestSum(t, k, ls) {
   return bestSum;
 }
 
-console.log(chooseBestSum(163, 3, ts));
-
 //Array of strings, find which one is most common
 
 function mostCommonString(arr) {
@@ -368,4 +366,28 @@ function numberJoy(n) {
   }
 }
 
-console.log(numberJoy(1829));
+// find out which one of the given numbers differs from the others in evenness
+function iqTest(numbers){
+  let even = [];
+  let odd = [];
+  let arr = numbers.split(' ');
+  arr.forEach(e => {
+    if (e%2 === 0) {
+      even.push(e)
+    } else {
+      odd.push(e)
+    }
+  })
+  if (even.length === 1) {
+    return arr.indexOf(even[0]) + 1
+  } else {
+    return arr.indexOf(odd[0]) + 1
+  }
+}
+
+var arr1 = "john".split('');
+var arr2 = arr1.reverse();
+var arr3 = "jones".split('');
+arr2.push(arr3);
+console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
