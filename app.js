@@ -346,3 +346,26 @@ function mostCommonString(arr) {
 }
 
 console.log(mostCommonString(['hi', 'yo', 'hi', 'hello', 'yo', 'hi', 'dog']));
+
+// Write a function numberJoy() which tests if a positive integer n is
+// Harshad and returns True if the product of its digit sum,
+// and its digit sum reversed, equals n. Otherwise return False.
+
+function numberJoy(n) {
+  let sum = 0;
+  let rev;
+  let arr = [];
+
+  arr = n.toString().split('')
+  arr.forEach(e => {
+    sum += Number(e)
+  })
+  rev = sum.toString().split('').reverse().join('')
+  if (sum*rev === n) {
+    return true
+  } else {
+    return false
+  }
+}
+
+console.log(numberJoy(1829));
