@@ -343,8 +343,6 @@ function mostCommonString(arr) {
   return maxEl
 }
 
-console.log(mostCommonString(['hi', 'yo', 'hi', 'hello', 'yo', 'hi', 'dog']));
-
 // Write a function numberJoy() which tests if a positive integer n is
 // Harshad and returns True if the product of its digit sum,
 // and its digit sum reversed, equals n. Otherwise return False.
@@ -389,5 +387,63 @@ var arr1 = "john".split('');
 var arr2 = arr1.reverse();
 var arr3 = "jones".split('');
 arr2.push(arr3);
-console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
-console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
+
+
+
+// Build a reverse pyramid with #:
+//     #
+//    ##
+//   ###
+//  ####
+// #####
+
+function pyramid(int) {
+  let output = '';
+  for (var i = 1; i < int; i++) {
+    for (var k = 1; k < i; k++) {
+      output += '#';
+    }
+  }
+}
+
+pyramid(5);
+
+
+function arrayPlay(str) {
+  numArr = [];
+  sortedArr = [];
+let arr = str.split(' ')
+arr.forEach(e => {
+  numArr.push(Number(e))
+})
+sortedArr = numArr.sort((a,b) => {
+  return b - a ;
+})
+return sortedArr
+}
+
+// console.log(arrayPlay('hello apples oranges dogs'));
+console.log(arrayPlay('1 2 12 14'));
+
+
+function arrToObj(arr) {
+  let obj = {};
+  for (var i = 0; i < arr.length; i+=2) {
+    obj[arr[i]] = arr[i+1]
+  }
+  return obj;
+}
+
+console.log(arrToObj(['a', 1, 'b', 2]));
+
+function objToArr(obj) {
+  let arr = [];
+  for (var key in obj) {
+    console.log(key);
+    arr.push(key)
+    arr.push(obj[key])
+  }
+  return arr
+}
+
+console.log(objToArr({a:1, b:1}));
