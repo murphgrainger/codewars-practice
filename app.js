@@ -434,8 +434,6 @@ function arrToObj(arr) {
   return obj;
 }
 
-console.log(arrToObj(['a', 1, 'b', 2]));
-
 function objToArr(obj) {
   let arr = [];
   for (var key in obj) {
@@ -446,4 +444,97 @@ function objToArr(obj) {
   return arr
 }
 
-console.log(objToArr({a:1, b:1}));
+// Write a function that returns both the
+// minimum and maximum number of the given list/array.
+// minMax([1,2,3,4,5])   == [1,5]
+
+function minMax(arr){
+  let arr2 = [];
+  let min = arr[0];
+  let max = arr[0];
+  arr.forEach(e => {
+    if (min > e) {
+      min = e;
+    } else if (max < e) {
+      max = e;
+    }
+  })
+  arr2.push(min, max)
+  return arr2;
+}
+
+// Write a function that takes a
+// string and return a new string with all vowels removed.
+
+function disemvowel(s) {
+  let str = '';
+  let arr2 = [];
+  let arr = s.split('')
+  arr.forEach(e => {
+    if (e !== 'a' && e !=='A' && e !== 'e' && e !=='E' && e !=='i' && e !=='I' && e !=='o' && e !=='O' && e !=='u' && e !=='U') {
+      arr2.push(e)
+    }
+  })
+  str = arr2.join('')
+  return str;
+}
+
+// You live in the city of Cartesia where all roads are laid out in a perfect grid.
+// You arrived ten minutes too early to an appointment,
+// so you decided to take the opportunity to go for a short walk.
+// The city provides its citizens with a Walk Generating App on their phones --
+// everytime you press the button it sends you an array of one-letter strings
+// representing directions to walk (eg. ['n', 's', 'w', 'e']).
+// You know it takes you one minute to traverse one city block, so create a function
+// that will return true if the walk the app gives you will take you exactly ten minutes
+// (you dont want to be early or late!) and will, of course, return you to your starting point.
+// Return false otherwise.
+
+function isValidWalk(walk) {
+  let n = 0;
+  let w = 0;
+  let total = 0;
+  walk.forEach(el => {
+    if (el === 'n') {
+      n++
+      total++
+    } else if (el === 's') {
+      n--
+      total++
+    } else if (el === 'w') {
+      w++
+      total++
+    } else if (el === 'e') {
+      w--
+      total++
+    }
+  })
+  if (n === 0 && w === 0 && total === 10) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function isValidWalk2(walk) {
+let n =  walk.filter(element => {
+    return element === 'n'
+  }).length
+let s =  walk.filter(element => {
+    return element === 's'
+  }).length
+let e =  walk.filter(element => {
+    return element === 'e'
+  }).length
+let w =  walk.filter(element => {
+    return element === 'w'
+  }).length
+
+if (n - s === 0 && e - w === 0 && walk.length === 10) {
+  return true
+} else {
+  return false
+  }
+}
+
+console.log(isValidWalk2(['n','s','n','s','n','s','n','s','n','s']));
