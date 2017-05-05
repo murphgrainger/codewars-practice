@@ -423,7 +423,6 @@ return sortedArr
 }
 
 // console.log(arrayPlay('hello apples oranges dogs'));
-console.log(arrayPlay('1 2 12 14'));
 
 
 function arrToObj(arr) {
@@ -437,7 +436,6 @@ function arrToObj(arr) {
 function objToArr(obj) {
   let arr = [];
   for (var key in obj) {
-    console.log(key);
     arr.push(key)
     arr.push(obj[key])
   }
@@ -537,4 +535,42 @@ if (n - s === 0 && e - w === 0 && walk.length === 10) {
   }
 }
 
-console.log(isValidWalk2(['n','s','n','s','n','s','n','s','n','s']));
+let transformedObject = {
+  myEmail: "rose@edge.com",
+  	myAddress: {
+  		myMailingStreet: "620 SW 5th Avenue Suite 400\nPortland City, Oregon City 97204\nUSA"
+  	},
+  	myFirstName: "Rose",
+  	myLastName: "Gonzalez",
+  	myBusinessPhone: "(512) 757-6000"
+}
+
+function addressClean(transformedObject) {
+  let arr = []
+  let street = [];
+  let city = [];
+  let state = [];
+  let zip = [];
+
+  done(transformedObject)
+
+  transformedObject.myMailingStreet = originalObject.MailingStreet
+
+  if (transformedObject.myMailingStreet.includes('\n') && (transformedObject.myMailingStreet.includes('United States') || transformedObject.myMailingStreet.includes('USA'))) {
+    arr = transformedObject.myMailingStreet.split('\n')
+    street = arr[0]
+    city = arr[1].split(',')[0]
+    state = arr[1].split(',')[1].trim('').split(' ').slice(0, -1).join(' ')
+    zip = arr[1].split(',')[1].split(' ').pop()
+
+    transformedObject.myMailingStreet = street;
+    transformedObject.myMailingCity = city;
+    transformedObject.myMailingState = state;
+    transformedObject.myMailingPostalCode = zip;
+  }
+  done(transformedObject)
+}
+console.log(addressClean(transformedObject));
+
+
+transformedObject.myMailingStreet = '123 Elm'
