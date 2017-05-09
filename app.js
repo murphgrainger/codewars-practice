@@ -570,7 +570,34 @@ function addressClean(transformedObject) {
   }
   done(transformedObject)
 }
-console.log(addressClean(transformedObject));
 
 
 transformedObject.myMailingStreet = '123 Elm'
+
+
+// Given a number, return a string with dash'-'marks
+// before and after each odd integer, but do not begin
+// or end the string with a dash mark.
+
+function dashatize(num) {
+  if (isNaN(num)) {
+    return 'NaN'
+  }
+  if (num < 0) {
+    num = num* -1;
+  }
+  let arr2 = []
+  let arr = num.toString().split('')
+  for (var i = 0; i < arr.length - 1; i++) {
+    if (arr[i]%2 === 0 && arr[i+1]%2 === 0) {
+      arr2.push(arr[i])
+    } else {
+      arr2.push(arr[i])
+      arr2.push('-')
+    }
+  }
+  arr2.push(arr[arr.length -1])
+  return arr2.join('')
+};
+
+console.log(dashatize(-12321222));
