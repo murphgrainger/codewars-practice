@@ -600,4 +600,55 @@ function dashatize(num) {
   return arr2.join('')
 };
 
-console.log(dashatize(-12321222));
+function balance(left,right){
+  let leftArr = [...left];
+  let rightArr = [...right];
+  let leftSum = 0;
+  let rightSum = 0;
+  leftArr.forEach(e => {
+    if (e === '?') {
+      leftSum += 3
+    } else {
+      leftSum += 2
+    }
+  })
+
+  rightArr.forEach(e => {
+    if (e === '?') {
+      rightSum += 3
+    } else {
+      rightSum += 2
+    }
+  })
+
+  if (rightSum > leftSum) {
+    return 'Right'
+  } else if (leftSum > rightSum) {
+    return 'Left'
+  } else {
+    return 'Balance'
+  }
+}
+
+// Given a list lst and a number N, create a new list
+// that contains each number of lst at most N times without
+// reordering. For example if N = 2, and the input is [1,2,3,1,2,1,2,3],
+// you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2
+// being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+
+function deleteNth(arr, x) {
+  let obj = {};
+  let cleanArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (obj.hasOwnProperty(arr[i]) && obj[arr[i]] < x) {
+      obj[arr[i]] ++;
+      cleanArr.push(arr[i])
+    } else if (!obj.hasOwnProperty(arr[i])) {
+      obj[arr[i]] = 1;
+      cleanArr.push(arr[i])
+    }
+  }
+  return cleanArr;
+}
+
+console.log(deleteNth([1,2,2,4,1],2));
