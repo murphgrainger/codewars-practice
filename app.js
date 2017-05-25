@@ -651,4 +651,19 @@ function deleteNth(arr, x) {
   return cleanArr;
 }
 
-console.log(deleteNth([1,2,2,4,1],2));
+
+// Write a function dirReduc which will take an array of strings and returns an
+// array of strings with the needless directions removed (W<->E or S<->N side by side).
+function dirReduc(arr){
+  for (var i = arr.length-1; i > 0; i+) {
+    console.log(arr[i]);
+    if ((arr[i] === 'NORTH' && arr[i-1] === 'SOUTH') || (arr[i] === 'SOUTH' && arr[i-1] === 'NORTH')){
+      arr.splice(arr[i], 2)
+    } else if ((arr[i] === 'EAST' && arr[i-1] === 'WEST') || (arr[i] === 'WEST' && arr[i-1] === 'EAST')) {
+      arr.splice(arr[i], 2)
+    }
+  }
+  return arr;
+}
+
+console.log(dirReduc(['NORTH', 'SOUTH', 'WEST', 'EAST', 'NORTH', 'EAST', 'WEST']));
