@@ -679,9 +679,10 @@ function dirReduc(arr){
 
 function abbreviate(string) {
   let arr = splitOnNonLetters(string)
+  console.log(arr);
   let newArr = []
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i].length > 4) {
+    if (arr[i].length >= 4) {
       newArr.push(arr[i][0])
       newArr.push(arr[i].length - 2)
       newArr.push(arr[i][arr[i].length -1])
@@ -697,15 +698,20 @@ function splitOnNonLetters(string) {
   let newArr = [];
   let symbol = [];
   let word = [];
+  let symbolCount = 0;
   let arr = string.split('')
   for (var i = 0; i < arr.length; i++) {
     if (isLetter(arr[i])) {
       word.push(arr[i])
     } else {
+      symbolCount++
       newArr.push(word.join(''))
       newArr.push(arr[i])
       word = []
     }
+  }
+  if (word !== []) {
+    newArr.push(word.join(''))
   }
   return newArr
 }
@@ -714,4 +720,4 @@ function isLetter(c) {
   return c.toLowerCase() != c.toUpperCase();
 }
 
-console.log(abbreviate('internationalization'));
+console.log(abbreviate('a mat balloon'));
