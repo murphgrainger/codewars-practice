@@ -655,8 +655,7 @@ function deleteNth(arr, x) {
 // Write a function dirReduc which will take an array of strings and returns an
 // array of strings with the needless directions removed (W<->E or S<->N side by side).
 function dirReduc(arr){
-  for (var i = arr.length-1; i > 0; i+) {
-    console.log(arr[i]);
+  for (var i = arr.length-1; i > 0; i++) {
     if ((arr[i] === 'NORTH' && arr[i-1] === 'SOUTH') || (arr[i] === 'SOUTH' && arr[i-1] === 'NORTH')){
       arr.splice(arr[i], 2)
     } else if ((arr[i] === 'EAST' && arr[i-1] === 'WEST') || (arr[i] === 'WEST' && arr[i-1] === 'EAST')) {
@@ -666,4 +665,53 @@ function dirReduc(arr){
   return arr;
 }
 
-console.log(dirReduc(['NORTH', 'SOUTH', 'WEST', 'EAST', 'NORTH', 'EAST', 'WEST']));
+
+// abbreviate("elephant-rides are really fun!")
+// //          ^^^^^^^^*^^^^^*^^^*^^^^^^*^^^*
+// // words (^):   "elephant" "rides" "are" "really" "fun"
+// //                123456     123     1     1234     1
+// // ignore short words:               X              X
+//
+// // abbreviate:    "e6t"     "r3s"  "are"  "r4y"   "fun"
+// // all non-word characters (*) remain in place
+// //                     "-"      " "    " "     " "     "!"
+// === "e6t-r3s are r4y fun!"
+
+function abbreviate(string) {
+  let arr = splitOnNonLetters(string)
+  let newArr = []
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].length > 4) {
+      newArr.push(arr[i][0])
+      newArr.push(arr[i].length - 2)
+      newArr.push(arr[i][arr[i].length -1])
+    } else {
+      newArr.push(arr[i])
+    }
+  }
+  let str = newArr.join('')
+  return str
+}
+
+function splitOnNonLetters(string) {
+  let newArr = [];
+  let symbol = [];
+  let word = [];
+  let arr = string.split('')
+  for (var i = 0; i < arr.length; i++) {
+    if (isLetter(arr[i])) {
+      word.push(arr[i])
+    } else {
+      newArr.push(word.join(''))
+      newArr.push(arr[i])
+      word = []
+    }
+  }
+  return newArr
+}
+
+function isLetter(c) {
+  return c.toLowerCase() != c.toUpperCase();
+}
+
+console.log(abbreviate('internationalization'));
