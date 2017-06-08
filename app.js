@@ -720,4 +720,13 @@ function isLetter(c) {
   return c.toLowerCase() != c.toUpperCase();
 }
 
-console.log(abbreviate('a mat balloon'));
+function caps(str) {
+  return str.toUpperCase() + '!';
+}
+
+function printWhile() {
+  let num = 0;
+  while(num<10) {
+    console.log(num+= 1);
+  }
+}
