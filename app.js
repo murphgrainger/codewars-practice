@@ -724,9 +724,18 @@ function caps(str) {
   return str.toUpperCase() + '!';
 }
 
-function printWhile() {
-  let num = 0;
-  while(num<10) {
-    console.log(num+= 1);
-  }
+// function printWhile() {
+//   let num = 0;
+//   while(num<10) {
+//     console.log(num+= 1);
+//   }
+// }
+
+function sortArray(arr) {
+  let newArr = arr.sort((a,b) => {
+    return a.length - b.length
+  })
+  return newArr;
 }
+
+console.log(sortArray(['hello', 'goodbye', 'thomas']));
