@@ -738,4 +738,11 @@ function sortArray(arr) {
   return newArr;
 }
 
-console.log(sortArray(['hello', 'goodbye', 'thomas']));
+function sortArray2(arr) {
+  let newArr = arr.sort((a,b) => {
+    return b.length - a.length
+  })
+  return newArr;
+}
+
+console.log(sortArray2(['hello', 'goodbye', 'thomas']));
