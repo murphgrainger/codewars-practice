@@ -187,16 +187,28 @@ function sortByLength (array) {
 // The numberOfOccurrences function must return
 // the number of occurrences of an element in an array.
 
-Array.prototype.numberOfOccurrences = function(element) {
-  let counter = 0;
-  for (var i = 0; i < this.length; i++) {
-    if (this[i] === element) {
-      counter++
+// Array.prototype.numberOfOccurrences = function(element) {
+//   let counter = 0;
+//   for (var i = 0; i < this.length; i++) {
+//     if (this[i] === element) {
+//       counter++
+//     }
+//   }
+//   return counter;
+// }
+function numberOfOccurrences(arr) {
+  let obj = {};
+  arr.forEach(e => {
+    if(obj.hasOwnProperty(e)) {
+      obj[e]++
+    } else {
+      obj[e] = 1;
     }
-  }
-  return counter;
-}
+  })
 
+  return obj;
+}
+console.log(numberOfOccurrences([1,2,3,3,5]));
 
 
 // Implement the method isSortedAndHow, which accepts an array of integers,
@@ -600,34 +612,31 @@ function dashatize(num) {
   return arr2.join('')
 };
 
-function balance(left,right){
-  let leftArr = [...left];
-  let rightArr = [...right];
-  let leftSum = 0;
-  let rightSum = 0;
-  leftArr.forEach(e => {
-    if (e === '?') {
-      leftSum += 3
-    } else {
-      leftSum += 2
-    }
-  })
+function balance(left, right) {
+let leftCount = countString(left);
+let rightCount = countString(right);
 
-  rightArr.forEach(e => {
-    if (e === '?') {
-      rightSum += 3
-    } else {
-      rightSum += 2
-    }
-  })
-
-  if (rightSum > leftSum) {
+if(leftCount > rightCount) {
+  return 'Left'
+  } else if (rightCount > leftCount) {
     return 'Right'
-  } else if (leftSum > rightSum) {
-    return 'Left'
   } else {
-    return 'Balance'
+    return 'Balanced'
   }
+}
+
+console.log(balance('??!', '!!!'));
+
+function countString(str) {
+  let count = 0;
+  str.split('').forEach(e => {
+    if (e === '?') {
+      count += 3;
+    } else if (e === '!') {
+      count += 2;
+    }
+  })
+  return count;
 }
 
 // Given a list lst and a number N, create a new list
