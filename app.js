@@ -753,5 +753,3 @@ function sortArray2(arr) {
   })
   return newArr;
 }
-
-console.log(sortArray2(['hello', 'goodbye', 'thomas']));
