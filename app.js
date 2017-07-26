@@ -208,8 +208,6 @@ function numberOfOccurrences(arr) {
 
   return obj;
 }
-console.log(numberOfOccurrences([1,2,3,3,5]));
-
 
 // Implement the method isSortedAndHow, which accepts an array of integers,
 // and returns one of the following:
@@ -276,7 +274,6 @@ function findMissingNumber(sequence){
     return 1;
   }
   else if ((numArr[i] - 1) === numArr[i-1]) {
-    console.log(numArr[i]);
     status = 0;
   }
   else {
@@ -625,8 +622,6 @@ if(leftCount > rightCount) {
   }
 }
 
-console.log(balance('??!', '!!!'));
-
 function countString(str) {
   let count = 0;
   str.split('').forEach(e => {
@@ -688,7 +683,6 @@ function dirReduc(arr){
 
 function abbreviate(string) {
   let arr = splitOnNonLetters(string)
-  console.log(arr);
   let newArr = []
   for (var i = 0; i < arr.length; i++) {
     if (arr[i].length >= 4) {
@@ -753,3 +747,17 @@ function sortArray2(arr) {
   })
   return newArr;
 }
+
+//remove all vowels from a string
+
+function disemvowel(str) {
+  let arr = [];
+  for (var i = 0; i < str.length; i++) {
+    if (str[i] !==  'a' && str[i] !== 'A' && str[i] !== 'e' && str[i] !== 'E' && str[i] !== 'i' && str[i] !== 'I' && str[i] !=='o' && str[i] !=='O' && str[i] !== 'u' && str[i] !== 'U') {
+      arr.push(str[i])
+    }
+  }
+  return arr.join('');
+}
+
+console.log(disemvowel('This wubsite is for losers LOL'));
